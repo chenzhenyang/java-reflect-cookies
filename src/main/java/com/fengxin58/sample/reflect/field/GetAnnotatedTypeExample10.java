@@ -1,4 +1,4 @@
-package com.example.demo.reflect.field;
+package com.fengxin58.sample.reflect.field;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,20 +13,28 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Map;
 
-public class GetAnnotatedTypeExample11 {
+/**
+ * AnnotatedWildcardType <br>
+ * 
+ * @author Administrator
+ *
+ */
+public class GetAnnotatedTypeExample10 {
 	
-    private Map<@PrimeNumber ? extends BigInteger, ? super BigDecimal> numbers;
+    private @PrimeNumber Map<? extends BigInteger, ? super BigDecimal> numbers;
 
     public static void main(String... args) throws NoSuchFieldException {
-        System.out.println("Example:- Map<@PrimeNumber ? extends BigInteger, ? super BigDecimal> numbers;");
-        Field field = GetAnnotatedTypeExample11.class.getDeclaredField("numbers");
+        System.out.println("Example:- @PrimeNumber Map<? extends BigInteger, ? super BigDecimal> numbers;");
+        Field field = GetAnnotatedTypeExample10.class.getDeclaredField("numbers");
         AnnotatedType annotatedType = field.getAnnotatedType();
         printAnnotatedType(annotatedType);
 
         if (annotatedType instanceof AnnotatedParameterizedType) {
+        	
             System.out.println("-- casting to AnnotatedParameterizedType --");
             AnnotatedParameterizedType parameterizedType = (AnnotatedParameterizedType) annotatedType;
             System.out.println("-- AnnotatedParameterizedType#getAnnotatedActualTypeArguments() --");
+            
             AnnotatedType[] actualTypeArguments = parameterizedType.getAnnotatedActualTypeArguments();
             for (AnnotatedType actualTypeArgument : actualTypeArguments) {
                 System.out.println("-- actualTypeArgument --");
@@ -36,6 +44,7 @@ public class GetAnnotatedTypeExample11 {
                     System.out.println("-- casting to AnnotatedWildcardType --");
                     AnnotatedWildcardType wildcardType = (AnnotatedWildcardType) actualTypeArgument;
                     System.out.println("-- AnnotatedWildcardType#getAnnotatedLowerBounds() --");
+                    
                     AnnotatedType[] lowerBounds = wildcardType.getAnnotatedLowerBounds();
                     printAnnotatedType(lowerBounds);
                     
@@ -70,4 +79,4 @@ public class GetAnnotatedTypeExample11 {
     @Target({ElementType.TYPE_USE})
     @Retention(RetentionPolicy.RUNTIME)
     private @interface PrimeNumber {}
-}
+} 

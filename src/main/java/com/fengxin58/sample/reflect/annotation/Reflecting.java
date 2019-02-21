@@ -1,23 +1,8 @@
-package com.example.demo.reflect;
-
-import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.LOCAL_VARIABLE;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PACKAGE;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.ElementType.TYPE_PARAMETER;
-import static java.lang.annotation.ElementType.TYPE_USE;
+package com.fengxin58.sample.reflect.annotation;
 
 import java.io.InvalidClassException;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.lang.reflect.AnnotatedParameterizedType;
 import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Constructor;
@@ -33,44 +18,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(value = { TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, ANNOTATION_TYPE, PACKAGE, TYPE_PARAMETER,
-		TYPE_USE })
-@AnnotationAnyWhere
-@interface AnnotationAnyWhere {
-}
+@Location
+public class Reflecting<@Location A extends Comparable<String> & Serializable, @Location B>
+		implements @Location Serializable {
 
-@AnnotationAnyWhere
-public class Reflecting<@AnnotationAnyWhere A extends Comparable<String> & Serializable, @AnnotationAnyWhere B>
-		implements @AnnotationAnyWhere Serializable {
-
-	@AnnotationAnyWhere
+	@Location
 	private A a;
 
-	@AnnotationAnyWhere
+	@Location
 	private B b;
 
-	@AnnotationAnyWhere
-	private List<@AnnotationAnyWhere ? extends Map<String, String>> list;
+	@Location
+	private List<@Location ? extends Map<@Location String, String>> list;
 
-	private List<@AnnotationAnyWhere A> t;
+	private List<@Location A> t;
 
-	@AnnotationAnyWhere
-	private List<@AnnotationAnyWhere ? super Map<String, String>> list2;
+	@Location
+	private List<@Location ? super Map<String, String>> list2;
 
-	private List<@Email(regular = "*") String> emails;
+	private List<@Location String> emails;
 
-	@AnnotationAnyWhere
-	public Reflecting() {
+	@Location
+	public Reflecting() {	
 
 	}
 
-	@AnnotationAnyWhere
-	@Deprecated
-	public Reflecting(@AnnotationAnyWhere @Deprecated A a, @AnnotationAnyWhere B b)
-			throws @AnnotationAnyWhere InvalidClassException, InvalidMarkException {
-		@AnnotationAnyWhere
+	@Location
+	public Reflecting(@Location  A a, @Location B b)
+			throws @Location InvalidClassException, InvalidMarkException {
+		@Location
 		String str = "test";
 		this.a = a;
 		this.b = b;

@@ -1,4 +1,4 @@
-package com.example.demo.reflect.field;
+package com.fengxin58.sample.reflect.field;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,7 +8,7 @@ import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
-import com.example.demo.reflect.field.GetAnnotatedTypeExample2.PrimeNumber4;
+import com.fengxin58.sample.reflect.field.GetAnnotatedTypeExample2.PrimeNumber4;
 
 public class GetAnnotatedTypeExample2<@PrimeNumber4 T> {
 

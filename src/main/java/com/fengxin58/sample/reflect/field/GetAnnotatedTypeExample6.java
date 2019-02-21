@@ -1,4 +1,4 @@
-package com.example.demo.reflect.field;
+package com.fengxin58.sample.reflect.field;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

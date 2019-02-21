@@ -1,4 +1,4 @@
-package com.example.demo.reflect.field;
+package com.fengxin58.sample.reflect.field;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,23 +9,25 @@ import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
-public class GetAnnotatedTypeExample4 {
+public class GetAnnotatedTypeExample3 {
 	
-    private int @PrimeNumber [] anInt;
+    private @PrimeNumber int[] anInt;
 
     public static void main(String... args) throws NoSuchFieldException {
-        System.out.println("Example:- int @PrimeNumber [] anInt;");
-        Field field = GetAnnotatedTypeExample4.class.getDeclaredField("anInt");
+        System.out.println("Example:- @PrimeNumber int[] anInt;");
+        
+        Field field = GetAnnotatedTypeExample3.class.getDeclaredField("anInt");
         
         AnnotatedType annotatedType = field.getAnnotatedType();
+        
         printAnnotatedType(annotatedType);
 
         if (annotatedType instanceof AnnotatedArrayType) {
             System.out.println("-- casting to AnnotatedArrayType --");
             AnnotatedArrayType annotatedArrayType = (AnnotatedArrayType) annotatedType;
-            System.out.println("-- AnnotatedArrayType.getAnnotatedGenericComponentType() --");
-            annotatedType = annotatedArrayType.getAnnotatedGenericComponentType();
-            printAnnotatedType(annotatedType);
+            System.out.println("-- AnnotatedArrayType#getAnnotatedGenericComponentType() --");
+            AnnotatedType annotatedType2 = annotatedArrayType.getAnnotatedGenericComponentType();
+            printAnnotatedType(annotatedType2);
         }
     }
 
